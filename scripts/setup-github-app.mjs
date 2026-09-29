@@ -50,7 +50,8 @@ async function main() {
       checks: "read",
       statuses: "read",
       contents: "write",
-      email_addresses: "read",
+      // Webicom: email_addresses (permesso account) rifiutato dal manifest; va attivato a mano
+      // dopo la creazione: Account permissions -> Email addresses -> Read-only.
       metadata: "read",
     },
     default_events: [
