@@ -69,7 +69,6 @@ async function main() {
     hook_attributes: {
       url: webhookUrl,
       active: true,
-      secret: webhookSecret,
     },
   };
 
@@ -102,7 +101,8 @@ async function main() {
     GITHUB_APP_CLIENT_ID: converted.client_id,
     GITHUB_APP_CLIENT_SECRET: converted.client_secret,
     GITHUB_APP_PRIVATE_KEY: wrapQuoted(escapeNewlines(converted.pem || "")),
-    GITHUB_APP_WEBHOOK_SECRET: webhookSecret,
+    // Webicom: GitHub non accetta più "secret" nel manifest; lo genera lui e lo restituisce qui.
+    GITHUB_APP_WEBHOOK_SECRET: converted.webhook_secret || webhookSecret,
   };
 
   if (envPath) {
